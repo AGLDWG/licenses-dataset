@@ -9,7 +9,7 @@ One a technical level, the core of this dataset is a simple [RDF](https://www.w3
 This repository is licensed under Creative Commons 4.0 International. See the [LICENSE deed](LICENSE) for details.
 
 ## Contacts
-Lead Developer:  
+Dataset Creator:  
 **Nicholas Car**  
 *Senior Experimental Scientist*  
 CSIRO Land & Water  
