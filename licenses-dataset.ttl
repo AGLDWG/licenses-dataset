@@ -1,60 +1,84 @@
 @prefix : <http://linked.data.gov.au/dataset/licenses#> .
-@prefix dct: <http://purl.org/dc/terms/source> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @base <http://linked.data.gov.au/dataset/licenses> .
 
 <http://linked.data.gov.au/dataset/licenses> rdf:type owl:Ontology ;
                                               owl:versionIRI <http://linked.data.gov.au/dataset/licenses/1.0> ;
-                                              owl:imports <http://www.w3.org/ns/odrl/2/> ,
-                                                          <file:/Users/car587/work/licenses-dataset/ontologies/dctypes.ttl> ;
-                                              <http://purl.org/dc/terms/modified> "2018-04-03"^^xsd:date ;
+                                              owl:imports odrl: ;
+                                              dct:modified "2018-04-03"^^xsd:date ;
                                               <http://purl.org/dc/elements/1.1/creator> "Nicholas Car"^^xsd:string ;
                                               rdfs:comment """A Linked Data dataset of licenses presented as Policies according to the [ODRL Information Model 2.2](https://www.w3.org/TR/odrl-model/).
 
     This dataset contains representations of licenses, such as the well known [Creative Commons BY 4.0](https://creativecommons.org/licenses/by/4.0) and the far less well known or used [Yancoal Pty Ltd Gloucester Licence](http://data.bioregionalassessments.gov.au/id/licence/559d2c0f898c0a477b44f7de), according to the ODRL Information Model. This representation interprets each license as a [`Policy`](https://www.w3.org/TR/odrl-vocab/#term-Policy) which then allows one or more [`Rule`](https://www.w3.org/TR/odrl-vocab/#term-Rule) objects in the form of a [`Duty`](https://www.w3.org/TR/odrl-vocab/#term-Duty), [`Permission`](https://www.w3.org/TR/odrl-vocab/#term-Permission), or [`Prohibition`](https://www.w3.org/TR/odrl-vocab/#term-Prohibition), to be associated with it. These associations then indicate actions that may be required of, or permitted to, or required not to be performed by, parties bound by the policy, i.e. users of data who have agreed to the license."""^^<http://ns.ontowiki.net/SysOnt/Markdown> ;
-                                              <http://purl.org/dc/terms/created> "2018-04-03"^^xsd:date ;
-                                              <http://purl.org/dc/terms/creator> <http://orcid.org/0000-0002-8742-7730> ;
+                                              dct:created "2018-04-03"^^xsd:date ;
+                                              dct:creator <http://orcid.org/0000-0002-8742-7730> ;
                                               <http://purl.org/dc/elements/1.1/publisher> "Australian Government Linked Data Working Group"^^xsd:string ;
-                                              <http://purl.org/dc/terms/publisher> <http://linked.data.gov.au> ;
+                                              dct:publisher <http://linked.data.gov.au> ;
                                               rdfs:label "Licenses Dataset"^^xsd:string .
 
 #################################################################
 #    Annotation properties
 #################################################################
 
-###  http://purl.org/dc/terms/source
+###  http://purl.org/dc/terms/
 dct: rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/relation
+dct:relation rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/prohibition
+odrl:prohibition rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://linked.data.gov.au/dataset/licenses#disclaimer
+:disclaimer rdf:type owl:ObjectProperty ;
+            rdfs:range rdfs:Literal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://linked.data.gov.au/dataset/licenses#License
+:License rdf:type owl:Class ;
+         rdfs:subClassOf odrl:Agreement ;
+         rdfs:comment "The standard notion of a license assigned by the creator of a work to be adhered to by Agents wishing to use that work." ;
+         rdfs:label "License"@en .
+
+
+###  http://purl.org/dc/dcmitype/Image
+<http://purl.org/dc/dcmitype/Image> rdf:type owl:Class .
 
 
 #################################################################
 #    Individuals
 #################################################################
 
-###  http://linked.data.gov.au/dataset/licenses#BaLicensesLogo
-:BaLicensesLogo rdf:type owl:NamedIndividual ,
-                         <http://purl.org/dc/dcmitype/Image> ;
-                dct: <http://www.bioregionalassessments.gov.au/sites/all/themes/custom/baip_online/logo.png> ;
-                rdfs:comment "Logo to be used when assigning custom Bioregional Assessments Licenses"^^xsd:string ;
-                rdfs:label "Bioregional Assessments Licenses Logo"^^xsd:string ;
-                rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/ba.png> .
-
-
 ###  http://linked.data.gov.au/dataset/licenses#BaLimitedGeneral
 :BaLimitedGeneral rdf:type owl:NamedIndividual ,
-                           <http://www.w3.org/ns/odrl/2/Agreement> ;
-                  dct: <http://data.bioregionalassessments.gov.au/id/licence/56df622e898c0a5b2dcd6a33 > ;
+                           :License ;
+                  dct:format <http://data.bioregionalassessments.gov.au/id/licence/56df622e898c0a5b2dcd6a33> ;
+                  dct:relation <http://linked.data.gov.au/dataset/licenses/image/BaLicensesLogo> ;
                   rdfs:label "Bioregional Assessments Limited General License"^^xsd:string ;
                   <http://www.w3.org/2004/02/skos/core#definition> "Limited licence for BA ONLY to USE and PUBLISH. The source dataset has been supplied to the Bioregional Assessment Programme on a limited licence. Other users may not reproduce this dataset. Third parties wishing to use or reproduce this data should contact the original source dataset providers."^^xsd:string .
 
 
 ###  http://linked.data.gov.au/dataset/licenses#CC-BY-4.0Licence
 :CC-BY-4.0Licence rdf:type owl:NamedIndividual ,
-                           <http://www.w3.org/ns/odrl/2/Agreement> ;
-                  dct: <https://creativecommons.org/licenses/by/4.0/> ;
+                           :License ;
+                  dct:format <https://creativecommons.org/licenses/by/4.0/> ;
                   rdfs:label "Creative Commons Attribution 4.0 International License"^^xsd:string ;
                   <http://www.w3.org/2004/02/skos/core#definition> """Attribution 4.0 International
 
@@ -455,9 +479,10 @@ Creative Commons may be contacted at creativecommons.org."""^^xsd:string .
 
 ###  http://linked.data.gov.au/dataset/licenses#CsiroDataLicence
 :CsiroDataLicence rdf:type owl:NamedIndividual ,
-                           <http://www.w3.org/ns/odrl/2/Agreement> ;
-                  dct: <https://confluence.csiro.au/display/daphelp/CSIRO+Data+Licence> ;
+                           :License ;
+                  dct:format <https://confluence.csiro.au/display/daphelp/CSIRO+Data+Licence> ;
                   rdfs:label "CSIRO Data Licence"^^xsd:string ;
+odrl:obligation :MustIndemnifyAssignee ;
                   <http://www.w3.org/2004/02/skos/core#definition> """1. Terminology
 
 ‘Data’ means the data and other information (in whatever form or manner it is expressed) made available to you under this licence as at the date it is accessed by you, but does not include any inventions, patents, design rights or trademarks of CSIRO or any other person or any computer programs used in the making or operation of a database.
@@ -492,6 +517,8 @@ You indemnify and release CSIRO against all claims, demands, suits, liability, l
 (b) third party use of any Data or other products derived from the Data; and
 
 (c) any breach of this Agreement by you.
+
+
 5. General
 
 5.1 Entire Agreement. This licence constitutes the entire agreement between us. CSIRO is not bound by any additional provisions that may appear in any communication from you.
@@ -507,18 +534,34 @@ You indemnify and release CSIRO against all claims, demands, suits, liability, l
 
 ###  http://linked.data.gov.au/dataset/licenses#DoeRneLicence
 :DoeRneLicence rdf:type owl:NamedIndividual ,
-                        <http://www.w3.org/ns/odrl/2/Agreement> ;
-               dct: <http://data.bioregionalassessments.gov.au/id/licence/55a70812898c0a7b3c9a6aac> ;
+                        :License ;
+               dct:format <http://data.bioregionalassessments.gov.au/id/licence/55a70812898c0a7b3c9a6aac> ;
                rdfs:label "DOE - RNE Licence"^^xsd:string ;
                <http://www.w3.org/2004/02/skos/core#definition> """Restricted for use by the BA Programme only. The data are available to the public under licence from the Department of Environment as part of the Commonwealth Spatial Data Access and Pricing Policy. They can be downloaded from the Department's DIG site (Discover Information Geographically) for use with appropriate Geographic Information Systems software at http://www.environment.gov.au/metadataexplorer/explorer.jsp
 
 Any use of the data must Acknowledge the Australian Heritage Council, Australian Government Department of the Environment."""^^xsd:string .
 
 
+###  http://linked.data.gov.au/dataset/licenses#GbaLimitedLicense
+:GbaLimitedLicense rdf:type owl:NamedIndividual ,
+                            :License ;
+                   dct:format <http://orcid.org/0000-0002-8742-7730> ;
+                   rdfs:comment "This is a general license used by datasets within the Geo-Bioregional Assessments Programme (https://www.csiro.au/en/Research/LWF/Areas/Water-resources/Resources-sector/Bioregional-assessments). It may only be used by datasets acquired by or generated by that program."^^xsd:string ;
+                   rdfs:label "GBA Limited License"@en .
+
+
+###  http://linked.data.gov.au/dataset/licenses#GbaRestrictedLicense
+:GbaRestrictedLicense rdf:type owl:NamedIndividual ,
+                               :License ;
+                      dct:format <http://orcid.org/0000-0002-8742-7730> ;
+                      rdfs:comment "This is a general license used by datasets within the Geo-Bioregional Assessments Programme (https://www.csiro.au/en/Research/LWF/Areas/Water-resources/Resources-sector/Bioregional-assessments). It may only be used by datasets acquired by or generated by that program."^^xsd:string ;
+                      rdfs:label "GBA Limited License"@en .
+
+
 ###  http://linked.data.gov.au/dataset/licenses#MitLicense
 :MitLicense rdf:type owl:NamedIndividual ,
-                     <http://www.w3.org/ns/odrl/2/Agreement> ;
-            dct: <https://opensource.org/licenses/MIT> ;
+                     :License ;
+            dct:format <https://opensource.org/licenses/MIT> ;
             rdfs:label "MIT License"^^xsd:string ;
             <http://www.w3.org/2004/02/skos/core#definition> """Copyright <YEAR> <COPYRIGHT HOLDER>
 
@@ -529,10 +572,32 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."""^^xsd:string .
 
 
+###  http://linked.data.gov.au/dataset/licenses#MustDisplayDisclaimer
+:MustDisplayDisclaimer rdf:type owl:NamedIndividual ,
+                                odrl:Duty ;
+                       rdfs:comment "The Party re-publishing the Asset must display a disclaimer statement given by the Assignee when doing so."@en ;
+                       rdfs:label "Must Display Disclaimer"@en ,
+                                  "Must display disclaimer"^^xsd:string ;
+                       <http://www.w3.org/2004/02/skos/core#definition> "Third parties must display a disclaimer given by the Assignee whenever reproducing the Asset."^^xsd:string .
+
+
+###  http://linked.data.gov.au/dataset/licenses#MustIndemnifyAssignee
+:MustIndemnifyAssignee rdf:type owl:NamedIndividual ,
+                                odrl:Duty ;
+                       rdfs:label "Must Indemnify Assigneee"@en ;
+                       <http://www.w3.org/2004/02/skos/core#definition> """You indemnify and release the Assignee against all claims, demands, suits, liability, loss or expense arising directly or indirectly from:
+
+(a) your use of the Asset;
+
+(b) third party use of any Asset or other products derived from the Asset; and
+
+(c) any breach of this License by you."""@en .
+
+
 ###  http://linked.data.gov.au/dataset/licenses#TheUnlicense
 :TheUnlicense rdf:type owl:NamedIndividual ,
-                       <http://www.w3.org/ns/odrl/2/Agreement> ;
-              dct: <http://unlicense.org> ;
+                       :License ;
+              dct:format <http://unlicense.org> ;
               rdfs:label "The Unlicense"^^xsd:string ;
               <http://www.w3.org/2004/02/skos/core#definition> """This is free and unencumbered software released into the public domain.
 
@@ -560,12 +625,29 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <http://unlicense.org/>"""^^xsd:string .
 
 
+###  http://linked.data.gov.au/dataset/licenses#ThirdPartyApproval
+:ThirdPartyApproval rdf:type owl:NamedIndividual ,
+                             odrl:Prohibition ;
+                    rdfs:label "No reproduction without approval"^^xsd:string ;
+                    <http://www.w3.org/2004/02/skos/core#definition> "Third parties may not reproduce the Asset, or any part thereof, without permission from Assignee"^^xsd:string .
+
+
 ###  http://linked.data.gov.au/dataset/licenses#YancoalPtyLtdGloucesterLicence
 :YancoalPtyLtdGloucesterLicence rdf:type owl:NamedIndividual ,
-                                         <http://www.w3.org/ns/odrl/2/Agreement> ;
-                                dct: <http://data.bioregionalassessments.gov.au/id/licence/559d2c0f898c0a477b44f7de> ;
-                                rdfs:label "Yancoal Pty Ltd Gloucester Licence"^^xsd:string ;
-                                <http://www.w3.org/2004/02/skos/core#definition> """3rd parties may not reproduce the material without permission from Yancoal. For Bioregional Assessment use, include the following caveat:
+                                         :License ;
+                                odrl:obligation :MustDisplayDisclaimer ;
+                                :disclaimer """This dataset has been provided for the sole purpose of the Bioregional Assessments. The dataset is published to support the transparency of the program and should not be reproduced, in part or whole, without permission from the data owner. Yancoal Australia accepts no liability in the use or accuracy of the information provided.  All original documentation can be sourced from the following websites:
+
+- http://stratfordcoal.com.au/documents
+- http://www.gloucestercoal.com.au/documents
+- http://www.duraliecoal.com.au/documents
+
+Additional Census Spring data sourced from Duralie Coal Mine Water Management Plan."""@en ;
+                                dct:format <http://data.bioregionalassessments.gov.au/id/licence/559d2c0f898c0a477b44f7de> ;
+                                rdfs:label "Yancoal Pty. Ltd. Gloucester Licence"^^xsd:string ;
+                                <http://www.w3.org/2004/02/skos/core#definition> """3rd parties may not reproduce the material without permission from Yancoal.
+
+For Bioregional Assessment use, include the following caveat:
 
 This dataset has been provided for the sole purpose of the Bioregional Assessments. The dataset is published to support the transparency of the program and should not be reproduced, in part or whole, without permission from the data owner. Yancoal Australia accepts no liability in the use or accuracy of the information provided.  All original documentation can be sourced from the following websites:
 
@@ -573,50 +655,105 @@ This dataset has been provided for the sole purpose of the Bioregional Assessmen
 - http://www.gloucestercoal.com.au/documents
 - http://www.duraliecoal.com.au/documents
 
-Additional Census Spring data sourced from Duralie Coal Mine Water Management Plan."""^^xsd:string .
+Additional Census Spring data sourced from Duralie Coal Mine Water Management Plan."""^^xsd:string ;
+                                odrl:prohibition :ThirdPartyApproval .
 
 
-###  http://linked.data.gov.au/dataset/licenses#agpl3
-:agpl3 rdf:type owl:NamedIndividual ,
-                <http://purl.org/dc/dcmitype/Image> ;
-       dct: <https://www.gnu.org/graphics/license-logos.en.html> ;
-       rdfs:comment "Logo to be used when assigning the AGPL v3 License"^^xsd:string ;
-       rdfs:label "GNU Affero General Public License v3 License Logo"^^xsd:string ;
-       rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/agpl3.png> .
+###  http://linked.data.gov.au/dataset/licenses/image/AGPL3
+<http://linked.data.gov.au/dataset/licenses/image/AGPL3> rdf:type owl:NamedIndividual ,
+                                                                  <http://purl.org/dc/dcmitype/Image> ;
+                                                         dct:format <https://www.gnu.org/graphics/license-logos.en.html> ;
+                                                         rdfs:comment "Logo to be used when assigning the AGPL v3 License"^^xsd:string ;
+                                                         rdfs:label "GNU Affero General Public License v3 License Logo"^^xsd:string ;
+                                                         rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/agpl3.png> .
 
 
-###  http://linked.data.gov.au/dataset/licenses#csiro
-:csiro rdf:type owl:NamedIndividual ,
-                <http://purl.org/dc/dcmitype/Image> ;
-       dct: <http://www.csiro.au/~/media/Web-team/Images/CSIRO_Logo/logo.png?mw=90&hash=E7225C4985C2701654821B94F7A06AF5C3D30F8E> ;
-       rdfs:comment "Logo to be used when assigning the CSIRO Licenses"^^xsd:string ;
-       rdfs:label "CSIRO Licenses Logo"^^xsd:string ;
-       rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/csiro.png> .
+###  http://linked.data.gov.au/dataset/licenses/image/BaLicensesLogo
+<http://linked.data.gov.au/dataset/licenses/image/BaLicensesLogo> rdf:type owl:NamedIndividual ,
+                                                                           <http://purl.org/dc/dcmitype/Image> ;
+                                                                  dct:format <http://www.bioregionalassessments.gov.au/sites/all/themes/custom/baip_online/logo.png> ;
+                                                                  rdfs:comment "Logo to be used when assigning custom Bioregional Assessments Licenses"^^xsd:string ;
+                                                                  rdfs:label "Bioregional Assessments Licenses Logo"^^xsd:string ;
+                                                                  rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/ba.png> .
 
 
-###  http://linked.data.gov.au/dataset/licenses#gpl3
-:gpl3 rdf:type owl:NamedIndividual ,
-               <http://purl.org/dc/dcmitype/Image> ;
-      dct: <https://www.gnu.org/graphics/license-logos.en.html> ;
-      rdfs:comment "Logo to be used when assigning the GPL v3 License"^^xsd:string ;
-      rdfs:label "GNU General Public License v3 License Logo"^^xsd:string ;
-      rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/gpl3.png> .
+###  http://linked.data.gov.au/dataset/licenses/image/CSIRO
+<http://linked.data.gov.au/dataset/licenses/image/CSIRO> rdf:type owl:NamedIndividual ,
+                                                                  <http://purl.org/dc/dcmitype/Image> ;
+                                                         dct: <http://www.csiro.au> ;
+                                                         rdfs:comment "Logo to be used when assigning the CSIRO Licenses"^^xsd:string ;
+                                                         rdfs:label "CSIRO Licenses Logo"^^xsd:string ;
+                                                         rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/csiro.png> .
 
 
-###  http://linked.data.gov.au/dataset/licenses#lgpl3
-:lgpl3 rdf:type owl:NamedIndividual ,
-                <http://purl.org/dc/dcmitype/Image> ;
-       dct: <https://www.gnu.org/graphics/license-logos.en.html> ;
-       rdfs:comment "Logo to be used when assigning the LGPL v3 License"^^xsd:string ;
-       rdfs:label "GNU Lesser General Public License v3 License Logo"^^xsd:string ;
-       rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/lgpl3.png> .
+###  http://linked.data.gov.au/dataset/licenses/image/CcByLogo
+<http://linked.data.gov.au/dataset/licenses/image/CcByLogo> rdf:type owl:NamedIndividual ,
+                                                                     <http://purl.org/dc/dcmitype/Image> ;
+                                                            dct:format <https://creativecommons.org/about/downloads> ;
+                                                            rdfs:comment "Logo to be used when assigning CC BY Licenses"^^xsd:string ;
+                                                            rdfs:label "The CC BY Logo"^^xsd:string ;
+                                                            rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/cc-by.png> .
 
 
-###  http://linked.data.gov.au/dataset/licenses/image/Mit
-<http://linked.data.gov.au/dataset/licenses/image/Mit> rdf:type owl:NamedIndividual ,
+###  http://linked.data.gov.au/dataset/licenses/image/CcByNcLogo
+<http://linked.data.gov.au/dataset/licenses/image/CcByNcLogo> rdf:type owl:NamedIndividual ,
+                                                                       <http://purl.org/dc/dcmitype/Image> ;
+                                                              dct:format <https://creativecommons.org/about/downloads> ;
+                                                              rdfs:comment "Logo to be used when assigning CC BY NC Licenses"^^xsd:string ;
+                                                              rdfs:label "The CC BY NC Logo"^^xsd:string ;
+                                                              rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/cc-by.png> .
+
+
+###  http://linked.data.gov.au/dataset/licenses/image/CcByNcSaLogo
+<http://linked.data.gov.au/dataset/licenses/image/CcByNcSaLogo> rdf:type owl:NamedIndividual ,
+                                                                         <http://purl.org/dc/dcmitype/Image> ;
+                                                                dct:format <https://creativecommons.org/about/downloads> ;
+                                                                rdfs:comment "Logo to be used when assigning CC BY NC SA Licenses"^^xsd:string ;
+                                                                rdfs:label "The CC BY NC SA Logo"^^xsd:string ;
+                                                                rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/cc-by.png> .
+
+
+###  http://linked.data.gov.au/dataset/licenses/image/CcByNdLogo
+<http://linked.data.gov.au/dataset/licenses/image/CcByNdLogo> rdf:type owl:NamedIndividual ,
+                                                                       <http://purl.org/dc/dcmitype/Image> ;
+                                                              dct:format <https://creativecommons.org/about/downloads> ;
+                                                              rdfs:comment "Logo to be used when assigning CC BY ND Licenses"^^xsd:string ;
+                                                              rdfs:label "The CC BY ND Logo"^^xsd:string ;
+                                                              rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/cc-by.png> .
+
+
+###  http://linked.data.gov.au/dataset/licenses/image/CcBySaLogo
+<http://linked.data.gov.au/dataset/licenses/image/CcBySaLogo> rdf:type owl:NamedIndividual ,
+                                                                       <http://purl.org/dc/dcmitype/Image> ;
+                                                              dct:format <https://creativecommons.org/about/downloads> ;
+                                                              rdfs:comment "Logo to be used when assigning CC BY SA Licenses"^^xsd:string ;
+                                                              rdfs:label "The CC BY SA Logo"^^xsd:string ;
+                                                              rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/cc-by.png> .
+
+
+###  http://linked.data.gov.au/dataset/licenses/image/GPL3
+<http://linked.data.gov.au/dataset/licenses/image/GPL3> rdf:type owl:NamedIndividual ,
+                                                                 <http://purl.org/dc/dcmitype/Image> ;
+                                                        dct:format <https://www.gnu.org/graphics/license-logos.en.html> ;
+                                                        rdfs:comment "Logo to be used when assigning the GPL v3 License"^^xsd:string ;
+                                                        rdfs:label "GNU General Public License v3 License Logo"^^xsd:string ;
+                                                        rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/gpl3.png> .
+
+
+###  http://linked.data.gov.au/dataset/licenses/image/LGPL3
+<http://linked.data.gov.au/dataset/licenses/image/LGPL3> rdf:type owl:NamedIndividual ,
+                                                                  <http://purl.org/dc/dcmitype/Image> ;
+                                                         dct:format <https://www.gnu.org/graphics/license-logos.en.html> ;
+                                                         rdfs:comment "Logo to be used when assigning the LGPL v3 License"^^xsd:string ;
+                                                         rdfs:label "GNU Lesser General Public License v3 License Logo"^^xsd:string ;
+                                                         rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/lgpl3.png> .
+
+
+###  http://linked.data.gov.au/dataset/licenses/image/MIT
+<http://linked.data.gov.au/dataset/licenses/image/MIT> rdf:type owl:NamedIndividual ,
                                                                 <http://purl.org/dc/dcmitype/Image> ;
-                                                       <http://purl.org/dc/terms/format> <https://www.iana.org/assignments/media-types/image/png> ;
-                                                       dct: <https://commons.wikimedia.org/wiki/Category:MIT_license_icons#/media/File:License_icon-mit-2.svg> ;
+                                                       dct:format <https://commons.wikimedia.org/wiki/Category:MIT_license_icons#/media/File:License_icon-mit-2.svg> ,
+                                                                  <https://www.iana.org/assignments/media-types/image/png> ;
                                                        rdfs:comment "Logo to be used when assigning the MIT License"^^xsd:string ;
                                                        rdfs:label "MIT License Logo"^^xsd:string ;
                                                        rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/mit.png> .
@@ -625,10 +762,18 @@ Additional Census Spring data sourced from Duralie Coal Mine Water Management Pl
 ###  http://linked.data.gov.au/dataset/licenses/image/TheUnlicense
 <http://linked.data.gov.au/dataset/licenses/image/TheUnlicense> rdf:type owl:NamedIndividual ,
                                                                          <http://purl.org/dc/dcmitype/Image> ;
-                                                                dct: <https://en.wikipedia.org/wiki/Unlicense> ;
+                                                                dct:format <https://en.wikipedia.org/wiki/Unlicense> ;
                                                                 rdfs:comment "Logo to be used when assigning the The Unlicense License"^^xsd:string ;
                                                                 rdfs:label "The Unlicense License Logo"^^xsd:string ;
                                                                 rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/theunlicense.png> .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:disclaimer rdfs:label "disclaimer"@en ;
+            rdfs:comment "A notice must be preserved and displayed when republishing an Asset. This property is expressed as a simple literal value and so is suitable for simple copyright notices." .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
