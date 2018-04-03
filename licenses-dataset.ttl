@@ -34,6 +34,15 @@ dct: rdf:type owl:AnnotationProperty .
 #    Individuals
 #################################################################
 
+###  http://linked.data.gov.au/dataset/licenses#BaLicensesLogo
+:BaLicensesLogo rdf:type owl:NamedIndividual ,
+                         <http://purl.org/dc/dcmitype/Image> ;
+                dct: <http://www.bioregionalassessments.gov.au/sites/all/themes/custom/baip_online/logo.png> ;
+                rdfs:comment "Logo to be used when assigning custom Bioregional Assessments Licenses"^^xsd:string ;
+                rdfs:label "Bioregional Assessments Licenses Logo"^^xsd:string ;
+                rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/ba.png> .
+
+
 ###  http://linked.data.gov.au/dataset/licenses#BaLimitedGeneral
 :BaLimitedGeneral rdf:type owl:NamedIndividual ,
                            <http://www.w3.org/ns/odrl/2/Agreement> ;
@@ -567,20 +576,59 @@ This dataset has been provided for the sole purpose of the Bioregional Assessmen
 Additional Census Spring data sourced from Duralie Coal Mine Water Management Plan."""^^xsd:string .
 
 
+###  http://linked.data.gov.au/dataset/licenses#agpl3
+:agpl3 rdf:type owl:NamedIndividual ,
+                <http://purl.org/dc/dcmitype/Image> ;
+       dct: <https://www.gnu.org/graphics/license-logos.en.html> ;
+       rdfs:comment "Logo to be used when assigning the AGPL v3 License"^^xsd:string ;
+       rdfs:label "GNU Affero General Public License v3 License Logo"^^xsd:string ;
+       rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/agpl3.png> .
+
+
+###  http://linked.data.gov.au/dataset/licenses#csiro
+:csiro rdf:type owl:NamedIndividual ,
+                <http://purl.org/dc/dcmitype/Image> ;
+       dct: <http://www.csiro.au/~/media/Web-team/Images/CSIRO_Logo/logo.png?mw=90&hash=E7225C4985C2701654821B94F7A06AF5C3D30F8E> ;
+       rdfs:comment "Logo to be used when assigning the CSIRO Licenses"^^xsd:string ;
+       rdfs:label "CSIRO Licenses Logo"^^xsd:string ;
+       rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/csiro.png> .
+
+
+###  http://linked.data.gov.au/dataset/licenses#gpl3
+:gpl3 rdf:type owl:NamedIndividual ,
+               <http://purl.org/dc/dcmitype/Image> ;
+      dct: <https://www.gnu.org/graphics/license-logos.en.html> ;
+      rdfs:comment "Logo to be used when assigning the GPL v3 License"^^xsd:string ;
+      rdfs:label "GNU General Public License v3 License Logo"^^xsd:string ;
+      rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/gpl3.png> .
+
+
+###  http://linked.data.gov.au/dataset/licenses#lgpl3
+:lgpl3 rdf:type owl:NamedIndividual ,
+                <http://purl.org/dc/dcmitype/Image> ;
+       dct: <https://www.gnu.org/graphics/license-logos.en.html> ;
+       rdfs:comment "Logo to be used when assigning the LGPL v3 License"^^xsd:string ;
+       rdfs:label "GNU Lesser General Public License v3 License Logo"^^xsd:string ;
+       rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/lgpl3.png> .
+
+
 ###  http://linked.data.gov.au/dataset/licenses/image/Mit
 <http://linked.data.gov.au/dataset/licenses/image/Mit> rdf:type owl:NamedIndividual ,
                                                                 <http://purl.org/dc/dcmitype/Image> ;
                                                        <http://purl.org/dc/terms/format> <https://www.iana.org/assignments/media-types/image/png> ;
+                                                       dct: <https://commons.wikimedia.org/wiki/Category:MIT_license_icons#/media/File:License_icon-mit-2.svg> ;
                                                        rdfs:comment "Logo to be used when assigning the MIT License"^^xsd:string ;
                                                        rdfs:label "MIT License Logo"^^xsd:string ;
-                                                       rdfs:seeAlso <https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/196px-PD-icon.svg.png> .
+                                                       rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/mit.png> .
 
 
 ###  http://linked.data.gov.au/dataset/licenses/image/TheUnlicense
 <http://linked.data.gov.au/dataset/licenses/image/TheUnlicense> rdf:type owl:NamedIndividual ,
                                                                          <http://purl.org/dc/dcmitype/Image> ;
+                                                                dct: <https://en.wikipedia.org/wiki/Unlicense> ;
                                                                 rdfs:comment "Logo to be used when assigning the The Unlicense License"^^xsd:string ;
-                                                                rdfs:label "The Unlicense License Logo"^^xsd:string .
+                                                                rdfs:label "The Unlicense License Logo"^^xsd:string ;
+                                                                rdfs:seeAlso <https://github.com/nicholascar/licenses-dataset/raw/master/images/theunlicense.png> .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
