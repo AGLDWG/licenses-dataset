@@ -622,10 +622,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <http://unlicense.org/>"""^^xsd:string .
 
 
-###  http://linked.data.gov.au/dataset/licenses#ThirdPartyApproval
-:ThirdPartyApproval rdf:type owl:NamedIndividual ,
+###  http://linked.data.gov.au/dataset/licenses#AssigneeApproval
+:AssigneeApproval rdf:type owl:NamedIndividual ,
                              odrl:Prohibition ;
-                    rdfs:label "No reproduction without approval"^^xsd:string ;
+                    rdfs:label "No reproduction without Assigness approval"^^xsd:string ;
                     <http://www.w3.org/2004/02/skos/core#definition> "Third parties may not reproduce the Asset, or any part thereof, without permission from Assignee"^^xsd:string .
 
 
@@ -653,7 +653,7 @@ This dataset has been provided for the sole purpose of the Bioregional Assessmen
 - http://www.duraliecoal.com.au/documents
 
 Additional Census Spring data sourced from Duralie Coal Mine Water Management Plan."""^^xsd:string ;
-                                odrl:prohibition :ThirdPartyApproval .
+                                odrl:prohibition :AssigneeApproval .
 
 
 ###  http://linked.data.gov.au/dataset/licenses/image/AGPL3
