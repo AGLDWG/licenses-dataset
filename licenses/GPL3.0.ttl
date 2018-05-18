@@ -1,0 +1,43 @@
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://wimmics.inria.fr/projects/licentia/licenses/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+:gpl3.0  a                    odrl:Set , cc:License ;
+        rdfs:label            "GNU General Public License v3.0" ;
+        cc:legalcode <http://gnu.org/licenses/gpl-3.0.html> ;
+        dcterms:creator <http://fsf.org/> ;
+        rdfs:seeAlso          <http://gnu.org/licenses/gpl-3.0.html> ;
+        l4lod:licensingTerms  <http://gnu.org/licenses/gpl-3.0.html> ;
+        dct:creator           <http://fsf.org/> ;
+        dct:hasVersion        "3.0" ;
+        dct:language          <http://www.lexvo.org/page/iso639-3/eng> ;
+        owl:sameAs            <http://www.gnu.org/licenses/gpl-3.0.rdf> ;
+        odrl:duty             [ a            odrl:Duty ;
+                                odrl:action  odrl:attachSource , odrl:attachPolicy
+                              ] ;
+        odrl:permission       [ a            odrl:Permission ;
+                                odrl:action  odrl:derive , odrl:distribute , odrl:reproduce
+                              ] ;
+        foaf:logo             <http://www.gnu.org/graphics/gplv3-127x51.png> .
+
+
+<http://gnu.org/licenses/gpl-3.0.html> a cc:License ;
+    cc:permits cc:DerivativeWorks,
+        cc:Distribution,
+        cc:Reproduction ;
+    cc:requires cc:Copyleft,
+        cc:Notice,
+        cc:SourceCode ;
+
+
