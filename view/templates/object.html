@@ -1,0 +1,8 @@
+{% extends "page_layout.html" %}
+
+        {% block content %}
+        <h1>{{ label }}</h1>
+        {%  if comment is not none %}
+        <p>{{ comment }}</p>
+        {% endif -%}
+        {% endblock %}

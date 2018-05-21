@@ -9,8 +9,10 @@ One a technical level, the core of this dataset is a simple [RDF](https://www.w3
 This repository is licensed under Creative Commons 4.0 International. See the [LICENSE deed](LICENSE) for details.
 
 ## Contacts
-Dataset Creator:  
+Creator:
 **Nicholas Car**  
 *Senior Experimental Scientist*  
-CSIRO Land & Water  
-<nicholas.car@csiro.au>  
+CSIRO Land & Water, Environmental Informatics Group
+Brisbane, Qld, Australia
+<nicholas.car@csiro.au>
+<http://orcid.org/0000-0002-8742-7730>

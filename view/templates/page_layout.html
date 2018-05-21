@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>AU Orgs API</title>
+    <link rel="stylesheet" href="http://localhost:5000{{ url_for('static', filename='css/vanilla/theme.css') }}" />
+</head>
+<body>
+    {% include 'vanilla/header.html' %}
+    <div id="container-content">
+        {% block content %}{% endblock %}
+    </div><!-- container-content -->
+    {% include 'vanilla/footer.html' %}
+</body>
+</html>
