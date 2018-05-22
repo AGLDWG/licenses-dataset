@@ -115,3 +115,6 @@ catalog-*
 
 # all licenses RDF file
 licenses.ttl
+
+# local config inc pwds
+_conf/
