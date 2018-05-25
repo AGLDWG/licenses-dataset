@@ -74,7 +74,7 @@ def policies():
         request,
         'http://localhost:5000/policy/',
         'Register of Policies',
-        'This contains all the itesm in this API, including general Policies, Licenses and so on.',
+        'This contains all the items in this API, including general Policies, Licenses and so on.',
         register,
         ['http://www.w3.org/ns/odrl/2/Policy', 'http://creativecommons.org/ns#License'],
         total,

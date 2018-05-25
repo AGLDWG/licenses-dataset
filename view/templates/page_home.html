@@ -5,18 +5,22 @@
     <p>A Linked Data API delivering Registers of ontologically characterised Policies and Licenses.</p>
 
     <h3>Registers</h3>
-    <table class="pretty">
+    <table class="altrows">
         <tr>
-            <th>Register of Registers</th>
+            <th>Rgister</th>
+            <th>Endpoint</th>
+        </tr>
+        <tr>
+            <td>Register of Registers</td>
             <td><a href="{{ url_for('controller.reg') }}">reg/</a></td>
         </tr>
         <tr>
-            <th>Policies</th>
-            <td><a href="{{ url_for('controller.reg') }}">reg/</a></td>
+            <td>Policies</td>
+            <td><a href="{{ url_for('controller.reg') }}">policy/</a></td>
         </tr>
         <tr>
-            <th>Licenses</th>
-            <td><a href="{{ url_for('controller.reg') }}">reg/</a></td>
+            <td>Licenses</td>
+            <td><a href="{{ url_for('controller.reg') }}">license/</a></td>
         </tr>
     </table>
 

@@ -2,14 +2,15 @@
 <html>
 <head lang="en">
     <meta charset="utf-8">
-    <title>AU Orgs API</title>
-    <link rel="stylesheet" href="http://localhost:5000{{ url_for('static', filename='css/vanilla/theme.css') }}" />
+    <title>Policies API</title>
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='ochre/css/ochre.css') }}" media="all" />
 </head>
 <body>
-    {% include 'vanilla/header.html' %}
-    <div id="container-content">
+    {% include 'ochre/header.html' %}
+    <div id="main" style="clear:both;">
         {% block content %}{% endblock %}
-    </div><!-- container-content -->
-    {% include 'vanilla/footer.html' %}
+    </div><!-- #main -->
+    {% include 'ochre/footer.html' %}
 </body>
 </html>
