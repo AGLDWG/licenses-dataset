@@ -2,24 +2,18 @@
 
 {% block content %}
     <h1>About</h1>
-    <p>This website is an Application Programming Interface (API), which means it is a machine-readable resource, that delivers the publicly available content of <a href="https://www.directory.gov.au/">directory.gov.au</a> according to <a href="https://en.wikipedia.org/wiki/Semantic_Web">Semantic Web</a> principles.</p>
-    <p>The goal of establishing this website is to demonstrate how machine-readable contents of directory.gov.au <em>could</em> look in the future and how Semantic Web and <a href="https://www.w3.org/standards/semanticweb/data">Linked Data</a> systems may interact with it.</p>
+    <p>This website is an Application Programming Interface (API), which means it is a machine-readable resource, that delivers...</p>
 
     <h3>How the data is produced</h3>
-    <p>The data for this API is taken from directory.gov.au's XML data feed made available in the <a href="https://data.gov.au/dataset/directory-gov-au-export">data.gov.au catalogue</a> and then converted into the Semantic Web format RDF using <a href="https://github.com/nicholascar/dirgovauld">this code</a>. That RDF data is then housed in an <a href="https://jena.apache.org/documentation/fuseki2/">Apache Jena graph database made available on the web via the Fuseki URI</a> which this API then queries as people or machines load particular web addresses.</p>
-    <p>The code for this API is available within the <a href="http://linked.data.gov.au">Australian Government Linked Data Working Group</a>'s GitHub account <a href="https://github.com/AGLDWG/directory.gov.au-pyldapi">here</a>. This API uses the <a href="https://pypi.org/project/pyldapi/">pyLDAPI</a> Python module created by <a href="https://www.csiro.au">CSIRO</a> to enable Linked Data functionality for basci Python web applications.</p>
+    <p>...</p>
 
     <h3>Status of the tool</h3>
-    <p>This API is only a small demonstrator. It will hopefully be replaced within the 2018/2019 Financial Year by a more robust tool that delivers RDF data for directory.gov.au data perhaps incorporated within directory.gov.au itself. The work to built this more robust tool is now being discussed by the <a href="https://www.finance.gov.au">Department of Finance</a> (owners of directory.gov.au) and the CSIRO.</p>
-
-    <h3>Persistent Identifier Demonstration</h3>
-    <p>This API demonstrates persistent identifiers (PIDs) in action. Instead of using particularly human-readable web address to identify and find information out about something, say Geoscience Australia, which is <a href="https://www.directory.gov.au/portfolios/industry-innovation-and-science-part-jobs-and-innovation-portfolio/geoscience-australia">https://www.directory.gov.au/portfolios/industry-innovation-and-science-part-jobs-and-innovation-portfolio/geoscience-australia</a> in directory.gov.au and has <a href="https://www.ga.gov.au">https://www.ga.gov.au</a> as it's own website, this API uses <a href="http://test.linked.data.gov.au/dataset/auorg/organisation/O-000887">http://test.linked.data.gov.au/dataset/auorg/organisation/O-000887</a> where <code>linked.data.gov.au</code> is the <a href="http://linked.data.gov.au">Australian Government Linked Data Working Group</a>'s dedicated subdomain for persistent Linked Data resources.</p>
-    <p>Note that currently <code>test.linked.data.gov.au</code> rather than <code>linked.data.gov.au</code> is used here as this is a demonstration resource.</p>
-    <p>This persistent web address <a href="http://test.linked.data.gov.au/org/O-000887">http://test.linked.data.gov.au/org/O-000887</a> uses a long-term stable key, <code>O-000887</code>, in addition to the dedicated web address for Australian Federal Government Organisations within this dataset, <code>http://test.linked.data.gov.au/org/</code> to make a web address for each dataset member.</p>
-    <p>These persistent web address mechanisms owe much to governance arrangements made about the <code>linked.data.gov.au</code> namespace which is governed by the Australian Government Linked Data Working Group and a full explanation of the mechanisms under test here, when finalised by the Group, will be available on the Group's website <a href="http://linked.data.gov.au">linked.data.gov.au</a></p>
+    <p>...</p>
 
     <h3>Contacts</h3>
-    <p>This prototype tool was developed by:</p>
+    <p>Contact the <a href="http://linked.data.gov.au">Australian Government Linked Data Working Group</a> for access, use and content issues:</p>
+    <ul><li><a href="http://linked.data.gov.au/contact">http://linked.data.gov.au/contact</a></li></ul>
+    <p>Contact the <strong>Lead Developer</strong> for technical tool issues:</p>
     <p>
         <strong>Nicholas Car</strong><br />
         <em>Senior Experimental Scientist</em><br />

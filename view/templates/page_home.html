@@ -1,41 +1,25 @@
 {% extends "page_layout.html" %}
 
 {% block content %}
-    <h1>AU Organisations Register</h1>
-    <h4 style="color:darkred; font-style:italic">This is a demonstration system only: 'test.' in web addresses will be removed in production</h4>
-    <p>This is the Linked Data version of <a href="http://directory.gov.au">directory.gov.au</a>. It allows web requests to be made for directory.gov.au content (no search, direct links only!) and responds with either simple web pages (HTML) or <a href="https://en.wikipedia.org/wiki/Resource_Description_Framework">Resource Description Framework (RDF)</a>, machine-readable, data. Internet protocol <a href="https://en.wikipedia.org/wiki/Content_negotiation">content negotiation</a> can be used to request the different formats.</p>
-    <p>Importantly, the web addresses used to make requests for this content are persistent URIs meaning they are long-term stable web addresses and thus can be quoted and used without fear that they will become broken links.</p>
-    <h3>Examples</h3>
-    <p><strong>1. An example organisation persistent URI</strong> (web address) for the CSIRO is:</p>
-    <ul>
-        <li>
-            <a href="{{ url_for('controller.object') }}?uri=http://test.linked.data.gov.au/org/O-000886">http://test.linked.data.gov.au/dataset/auorg/organisation/O-000886</a>
-            <ul>
-                <li>Machine-readable RDF: <a href="{{ url_for('controller.object') }}?uri=http://test.linked.data.gov.au/org/O-000886&_format=text/turtle">http://test.linked.data.gov.au/dataset/auorg/organisation/O-000886<strong>?_format=text/turtle</strong></a></li>
-            </ul>
-        </li>
-    </ul>
-    <p>...where <code>O-000886</code> is the Department of Finance's <em>unique record ID</em> for the CSIRO - it's persistent ID.</p>
-    <p><strong>2. An example of a <em>Register</em></strong> - a list of items - is the Persons Register:</p>
-    <ul>
-        <li>
-            <a href="http://test.linked.data.gov.au/person/">http://test.linked.data.gov.au/person/</a>
-            <ul>
-                <li>Machine-readable RDF: <a href="{{ url_for('controller.persons') }}?_format=text/turtle">http://test.linked.data.gov.au/person/<strong>?_format=text/turtle</strong></a></li>
-            </ul>
-        </li>
-    </ul>
-    <p>...where the web address is not for a specific Person but a list of persons.</p>
-
-    <h4>Top-level registers</h4>
-    <p>Note that the URIs given above could be <code>.../dataset/auorg/org/{ORG-ID}</code> &amp; <code>.../dataset/auorg/person/</code> but that the <code>/dataset/auorg</code> segments that identify this dataset can be removed due to the allocation of top-level registers (<code>/org>/</code> &amp; <code>/person/</code>) to this dataset.</p>
+    <h1>Policies and Licenses Register</h1>
+    <p>A Linked Data API delivering Registers of ontologically characterised Policies and Licenses.</p>
 
     <h3>Registers</h3>
-    <p>In addition to the 4 main registers that this API delivers, it also sports a top-level register that lists other registers, see:</p>
-    <ul><li><a href="{{ url_for('controller.reg') }}">reg/</a></li></ul>
-
-    <p>More items may be added shortly taken from directory.gov.au content</p>
+    <table class="pretty">
+        <tr>
+            <th>Register of Registers</th>
+            <td><a href="{{ url_for('controller.reg') }}">reg/</a></td>
+        </tr>
+        <tr>
+            <th>Policies</th>
+            <td><a href="{{ url_for('controller.reg') }}">reg/</a></td>
+        </tr>
+        <tr>
+            <th>Licenses</th>
+            <td><a href="{{ url_for('controller.reg') }}">reg/</a></td>
+        </tr>
+    </table>
 
     <h3>Further information</h3>
-    <p>For information about how this data is produced, timelines for its improvement and who's involved, see the <a href="{{ url_for('controller.about') }}">About Page</a>.</p>
+    <p>For information about how the data in this system is modelled and generated, see the <a href="{{ url_for('controller.about') }}">About Page</a>.</p>
 {% endblock %}
