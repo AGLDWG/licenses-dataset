@@ -1,5 +1,5 @@
 import logging
-import _conf as conf
+import _config as conf
 from flask import Flask
 from controller import routes
 import pyldapi

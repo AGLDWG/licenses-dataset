@@ -1,0 +1,25 @@
+@prefix :      <http://test.linked.data.gov.au/dataset/policies/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+
+
+:gpl-2.0  a                 odrl:Set , odrl:Policy , cc:License ;
+        rdfs:label          "GNU General Public License v2.0" ;
+        rdfs:seeAlso        <http://gnu.org/licenses/gpl-2.0.html> ;
+        cc:legalcode        <http://gnu.org/licenses/gpl-2.0.html> ;
+        dct:creator         <http://fsf.org/> ;
+        dct:hasVersion      "2.0" ;
+        dct:language        <http://www.lexvo.org/page/iso639-3/eng> ;
+        owl:sameAs          <http://www.gnu.org/licenses/gpl-2.0.rdf> ;
+        odrl:duty           [ a            odrl:Duty ;
+                              odrl:action  odrl:attachSource , odrl:attachPolicy
+                            ] ;
+        odrl:permission     [ a            odrl:Permission ;
+                              odrl:action  odrl:derive , odrl:distribute , odrl:reproduce
+                            ] ;
+        foaf:logo           <http://www.gnu.org/graphics/gplv3-127x51.png> .

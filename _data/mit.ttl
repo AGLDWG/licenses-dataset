@@ -1,10 +1,14 @@
-@prefix :      <http://wimmics.inria.fr/projects/licentia/licenses/> .
-@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix :      <http://test.linked.data.gov.au/dataset/policies/> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix dct:   <http://purl.org/dc/terms/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 @prefix cc:    <http://creativecommons.org/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
 
-:mit  a                  odrl:Set , cc:License ;
+
+:mit  a                  odrl:Set , odrl:Policy , cc:License ;
         rdfs:label       "MIT License" ;
         cc:legalcode     <http://opensource.org/licenses/MIT> ;
         dct:language     <http://www.lexvo.org/page/iso639-3/eng> ;

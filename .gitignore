@@ -113,8 +113,11 @@ catalog-*
 # Mac files
 .DS_Store
 
-# all licenses RDF file
+# all _data RDF file
 licenses.ttl
 
 # config dir
 _config/
+
+# Reg of Reg auto-generated file
+rofr.ttl

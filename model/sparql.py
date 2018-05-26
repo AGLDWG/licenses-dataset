@@ -1,3 +1,6 @@
+from SPARQLWrapper import SPARQLWrapper, JSON, XML, N3, RDF, CSV, TSV
+
+
 def total_policies():
     return 12
 
