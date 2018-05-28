@@ -11,7 +11,7 @@
         </ul>
         <table>
             <tr>
-                <td style="width:50%; vertical-align:top;">
+                <td style="vertical-align:top; width:500px;">
                     <h3>Items in this Register</h3>
                     <ul>
                     {%- for item in register_items -%}
@@ -22,6 +22,7 @@
                         {%- endif %}
                     {%- endfor -%}
                     </ul>
+
                     {% if prev_page is not none %}
                     <a href="{{ '{uri}?per_page={per_page}&page={page}'.format(uri=uri, per_page=per_page, page=prev_page) }}">Previous page</a>
                     {% endif %}
@@ -31,20 +32,28 @@
                     {% if next_page is not none %}
                     <a href="{{ '{uri}?per_page={per_page}&page={page}'.format(uri=uri, per_page=per_page, page=next_page) }}">Next page</a>
                     {% endif %}
+
+                    <p>
+                        page {{ page }}<br />
+                        per_page {{ per_page }}<br />
+                        prev_page {{ prev_page }}<br />
+                        next_page {{ next_page }}<br />
+                        last_page {{ last_page }}
+                    </p>
                 </td>
-                <td style="width:50%; vertical-align:top;">
+                <td style="vertical-align:top;">
                     <h3>Automated Pagination</h3>
                     <p>To paginate these registered items, something you may wish a link following tool like a web crawler to do, use the query string arguments 'page' for the page number and 'per_page' for the number of items per page. HTTP <code>Link</code> headers of <code>first</code>, <code>prev</code>, <code>next</code> &amp; <code>last</code> are given to indicate URIs to the first, a previous, a next and the last page.</p>
                     <p>Example:</p>
                     <pre>
-        {{ uri }}?page=7&per_page=50
+http://example.com/reg/?page=7&per_page=50
                     </pre>
                     <p>Assuming 500 items, this request would result in a response with the following Link header:</p>
                     <pre>
-        Link:   &lt;{{ uri }}?per_page=50&gt; rel="first",
-            &lt;{{ uri }}?per_page=50&page=6&gt; rel="prev",
-            &lt;{{ uri }}?per_page=50&page=8&gt; rel="next",
-            &lt;{{ uri }}?per_page=50&page=10&gt; rel="last"
+Link:   &lt;http://example.com/reg/?per_page=50&gt; rel="first",
+    &lt;http://example.com/reg/?per_page=50&page=6&gt; rel="prev",
+    &lt;http://example.com/reg/?per_page=50&page=8&gt; rel="next",
+    &lt;http://example.com/reg/?per_page=50&page=10&gt; rel="last"
                     </pre>
                     <p>If you want to page through the whole collection, you should start at <code>first</code> and follow the link headers until you reach <code>last</code> or until there is no <code>last</code> link given. You shouldn't try to calculate each <code>page</code> query string argument yourself.</p>
                     <h3>Alternate views</h3>

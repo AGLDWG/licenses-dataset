@@ -63,7 +63,7 @@ def policies():
         OFFSET {}
     '''.format(limit, offset)
     register = []
-    orgs = sparql.query_dummy()
+    orgs = sparql.query(q)
 
     for org in orgs:
         o = str(org['uri']['value'])
@@ -87,7 +87,7 @@ def licenses():
     per_page = request.args.get('per_page', type=int, default=20)
     page = request.args.get('page', type=int, default=1)
 
-    total = sparql.total_policies()
+    total = sparql.total_licenses()
     if total is None:
         return Response('_data store is unreachable', status=500, mimetype='text/plain')
     pagination = Pagination(page=page, total=total, per_page=per_page, record_name='Boards')
@@ -110,11 +110,11 @@ def licenses():
         OFFSET {}
     '''.format(limit, offset)
     register = []
-    orgs = sparql.query_dummy()
+    vocabs = sparql.query(q)
 
-    for org in orgs:
-        o = str(org['uri']['value'])
-        l = str(org['label']['value'])
+    for vocab in vocabs:
+        o = str(vocab['uri']['value'])
+        l = str(vocab['label']['value'])
         register.append((o, l))
 
     return RegisterRenderer(
@@ -127,3 +127,59 @@ def licenses():
         total,
         super_register='http://localhost:5000/reg/'
     ).render()
+
+
+@routes.route('/action/')
+def actions():
+    per_page = request.args.get('per_page', type=int, default=20)
+    page = request.args.get('page', type=int, default=1)
+
+    total = sparql.total_actions()
+    if total is None:
+        return Response('_data store is unreachable', status=500, mimetype='text/plain')
+
+    # get list of Action URIs and labels from the triplestore, paginating
+    q = '''
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+        SELECT * WHERE {{ 
+        ?uri a odrl:Action ;
+            rdfs:label ?label .
+        }}
+        ORDER BY ?label
+        LIMIT {}
+        OFFSET {}
+        '''.format(per_page, (page - 1) * per_page)
+    actions = sparql.query(q)
+
+    register = []
+    for action in actions:
+        o = str(action['uri']['value'])
+        l = str(action['label']['value'])
+        register.append((o, l))
+
+    return RegisterRenderer(
+        request,
+        'http://localhost:5000/action/',
+        'Register of Actions',
+        'This register contains ODRL Actions.',
+        register,
+        ['http://www.w3.org/ns/odrl/2/'],
+        total,
+        super_register='http://localhost:5000/reg/',
+    ).render()
+
+
+#
+#   Functions
+#
+@routes.route('/function/login')
+def login():
+    return render_template('page_login.html')
+
+
+@routes.route('/function/new-license')
+def new_license():
+    return 'Dummy Crete New License'
+
+

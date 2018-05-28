@@ -1,0 +1,27 @@
+Policy: National Electricity Rules 5.13A Distribution zone substation information
+
+
+:nem-5.13A a        odrl:Set , odrl:Policy ;
+    rdfs:label      "National Electricity Rules 5.13A Distribution zone substation information" ;
+    dct:creator     <http://data.bioregionalassessments.gov.au/person/car587> ,
+                    <http://data.bioregionalassessments.gov.au/person/tet004> ;
+    dct:created     "2018-05-28"^^xsd:date ;
+    rdfs:seeAlso    <https://www.aemc.gov.au/sites/default/files/2018-04/NER%20-%20v107%20-%20Chapter%205.PDF> ;
+    cc:legalcode    <https://www.aemc.gov.au/sites/default/files/2018-04/NER%20-%20v107%20-%20Chapter%205.PDF> ;
+    dct:hasVersion  "107" ;
+    dct:language    <http://www.lexvo.org/page/iso639-3/eng> ;
+    odrl:duty       [ a            odrl:Duty ;
+                        odrl:assigner "Commonwealth of Australia"@en ;  # or NEMCO
+                        odrl:assignee <http://example.com/group/power-companies> ;  # This is a Scope Group, undefined
+                        odrl:action [
+                          # provide zone substation information under subparagraphs (b)(4) and (5) is to provide raw data
+                          #
+                          # the name or other identifier for the zone substation
+                          # load information or statement in lieu if load information is deemed confidential by the Assignee
+                          # each date and time interval for which load data is available for the zone substation
+                          # for each date and time interval specified under subparagraph (b)(3), load (in kW or MW); and
+                          # any additional information relating to load at the zone substation that the Assignee wishes to provide
+                        ] ;
+                     ] ;
+    adms:status <http://dd.eionet.europa.eu/vocabulary/datadictionary/status/submitted> .  # assigner to ratify in order to be deemed Valid
+                # <http://dd.eionet.europa.eu/vocabulary/datadictionary/status/valid>

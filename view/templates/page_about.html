@@ -2,13 +2,17 @@
 
 {% block content %}
     <h1>About</h1>
-    <p>This website is an Application Programming Interface (API), which means it is a machine-readable resource, that delivers...</p>
+    <p>This website is an Application Programming Interface (API), which means it is a machine-readable resource, that delivers instances of and the ability to create <em>Policies</em> which are "statements about the usage of content and services" (from the <a href="https://www.w3.org/TR/odrl-model/">ODRL Information Model 2.2</a>). Policies here are formally defined by the <a href="https://www.w3.org/ns/odrl/2/">ODRL Version 2.2. Ontology</a> and include <em>Licenses</em> as a specialised type of Policy such as the well-known Creative Commons series of Licenses often used to license data internationally and in particular by the Australian government.</p>
 
     <h3>How the data is produced</h3>
-    <p>...</p>
+    <p>Most of all the well-known <em>Licenses</em> listed in this API (see the <a href="{{ url_for('controller.licenses') }}">Licenses Register</a>) were initially characterised by work done for the <a href="http://licentia.inria.fr">Licentia tool</a>. The characterisations of the licenses have also since been added to by the creators of this API.</p>
+    <p>Characterisations of Policies and Licenses beyond those from Licentia have been added by the creators of this tool and allowed contributors. Individual Policies and Licenses have their creators indicated in their metadata.</p>
+    <h4>If you want to add Policies and Licenses...</h4>
+    <p>Additions to this system are allowed from members of the <a href="http://linked.data.gov.au">Australian Government Linked Data Working Group</a> only thus if you wish to add Policies and Licenses, please <a href="http://linked.data.gov.au/join.html">join the Working Group</a>!</p>
+    <p>Members of the Working Group will be able to log in to this system and create new Policies and Licenses via the <a href="{{ url_for('controller.login') }}">login page</a>.</p>
 
     <h3>Status of the tool</h3>
-    <p>...</p>
+    <p>This tool was first produced in May, 2018, and for the sort while following is in Beta testing mode as indicated on the <a href="{{ url_for('controller.home') }}">home page</a>. This Beta designation will be removed when the tool is in full production.</p>
 
     <h3>Contacts</h3>
     <p>Contact the <a href="http://linked.data.gov.au">Australian Government Linked Data Working Group</a> for access, use and content issues:</p>

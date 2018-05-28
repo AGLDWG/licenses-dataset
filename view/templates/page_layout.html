@@ -7,10 +7,34 @@
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='ochre/css/ochre.css') }}" media="all" />
 </head>
 <body>
-    {% include 'ochre/header.html' %}
+    <header id="header" style="text-align:right; padding-top:10px;">
+        <div style="width:150px; height:150px; float:left;">
+            <img src="{{ url_for('static', filename='ochre/img/agldwg-logo-ochre-150.png') }}" alt="AGLDWG logo" />
+        </div>
+        <div id="nav">
+            <a href="{{ url_for('controller.home') }}">API Home</a> |
+            <a href="{{ url_for('controller.policies') }}">Policies</a> |
+            <a href="{{ url_for('controller.licenses') }}">Licenses</a> |
+            <a href="{{ url_for('controller.actions') }}">ODRL Actions</a> |
+            <a href="{{ url_for('controller.about') }}">About</a>
+        </div>
+    </header>
+
     <div id="main" style="clear:both;">
         {% block content %}{% endblock %}
     </div><!-- #main -->
-    {% include 'ochre/footer.html' %}
+
+    <div id="footer">
+        <div id="footer_content">
+            <div id="license">
+                <img src="{{ url_for('static', filename='ochre/img/cc-by.png') }}" alt="The Creative Commons Attribution 4.0 licence with the exception of the Commonwealth Coat of Arms" width="88" height="31">
+                This web page and API content, in all forms, human and machine readable, is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. See its <a href="https://github.com/AGLDWG/licenses-dataset">software repository</a> for code and data
+            </div>
+            <div style="float:right; width:49%; text-align:right;">
+
+            </div>
+            <div style="clear:both;">&nbsp;</div>
+        </div>
+    </div><!-- footer -->
 </body>
 </html>
