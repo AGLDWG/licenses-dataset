@@ -1,8 +1,16 @@
 {% extends "page_layout.html" %}
 
         {% block content %}
-        <h1>{{ label }}</h1>
-        {%  if comment is not none %}
-        <p>{{ comment }}</p>
+        <h1>{{ deets['label'] }}</h1>
+        <ul><li><a href="{{ request.url }}&_view=alternates">Alternate Views</a></li></ul>
+        {%  if deets['desc'] is not none %}
+        <p>{{ desc }}</p>
         {% endif -%}
-        {% endblock %}
+        <table>
+            {%  if deets['created'] is not none %}
+            <tr>
+                <th>Created</th><td>{{ deets['created'] }}</td>
+            </tr>
+            {% endif -%}
+        </table>
+{% endblock %}

@@ -165,6 +165,34 @@ def actions():
     ).render()
 
 
+@routes.route('/object')
+def object():
+    if request.args.get('uri') is not None and str(request.args.get('uri')).startswith('http'):
+        uri = request.args.get('uri')
+    else:
+        return Response('You must supply the URI if a resource with ?uri=...', status=400, mimetype='text/plain')
+
+    # declare the one auorg view for all the individuals in this API
+    views = {
+            'pol': View(
+                'OdrlPolicy View',
+                'A view of basic properties of main classes in the ODRL Policies Ontology',
+                ['text/html'] + Renderer.RDF_MIMETYPES,
+                'text/turtle',
+                namespace='http://test.linked.data.gov.au/def/odrl-policies#'
+            )
+    }
+
+    return OdrlPoliciesObjectRenderer(
+        request,
+        uri,
+        'Named Individual',
+        'An individual object from the ORDL Policies datase',
+        views,
+        'pol'
+    ).render()
+
+
 #
 #   Functions
 #
@@ -178,3 +206,47 @@ def new_license():
     return 'Dummy Crete New License'
 
 
+class OdrlPoliciesObjectRenderer(Renderer):
+    def __init__(
+            self,
+            request,
+            uri,
+            label,
+            comment,
+            views,
+            default_view_token
+            ):
+        super().__init__(
+            request,
+            uri,
+            views,
+            default_view_token
+        )
+        self.label = label
+        self.comment = comment
+
+    def render(self):
+        if hasattr(self, 'vf_error'):
+            return Response(self.vf_error, status=406, mimetype='text/plain')
+        else:
+            if self.view == 'alternates':
+                return self._render_alternates_view()
+            elif self.view == 'pol':
+                return self._render_pol_view()
+
+    def _render_pol_view(self):
+        if self.format in Renderer.RDF_MIMETYPES:
+            rdf = sparql.object_describe(self.uri, self.format)
+            if rdf is None:
+                return Response('No triples contain that URI as subject', status=404, mimetype='text/plain')
+            else:
+                return Response(rdf, mimetype=self.format)
+        else:  # only the HTML format left
+            deets = sparql.instance_details(self.uri)
+            if deets is None:
+                return Response('That URI yielded no data', status=404, mimetype='text/plain')
+            else:
+                return render_template(
+                    'object.html',
+                    deets=deets
+                )
