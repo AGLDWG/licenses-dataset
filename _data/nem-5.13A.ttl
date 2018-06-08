@@ -1,4 +1,13 @@
-Policy: National Electricity Rules 5.13A Distribution zone substation information
+# Policy: National Electricity Rules 5.13A Distribution zone substation information
+@prefix :      <http://test.linked.data.gov.au/dataset/odrl-policies/policy/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix adms:  <http://www.w3.org/ns/adms#> .
 
 
 :nem-5.13A a        odrl:Set , odrl:Policy ;
@@ -11,7 +20,7 @@ Policy: National Electricity Rules 5.13A Distribution zone substation informatio
     dct:hasVersion  "107" ;
     dct:language    <http://www.lexvo.org/page/iso639-3/eng> ;
     odrl:duty       [ a            odrl:Duty ;
-                        odrl:assigner "Commonwealth of Australia"@en ;  # or NEMCO
+                        odrl:assigner <http://test.linked.data.gov.au/board/B-00686> ;  # Australian Energy Market Operator
                         odrl:assignee <http://example.com/group/power-companies> ;  # This is a Scope Group, undefined
                         odrl:action [
                           # provide zone substation information under subparagraphs (b)(4) and (5) is to provide raw data
