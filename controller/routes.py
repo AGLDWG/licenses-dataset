@@ -90,11 +90,6 @@ def licenses():
     total = sparql.total_licenses()
     if total is None:
         return Response('_data store is unreachable', status=500, mimetype='text/plain')
-    pagination = Pagination(page=page, total=total, per_page=per_page, record_name='Boards')
-
-    # translate pagination vars to query
-    limit = pagination.per_page
-    offset = (pagination.page - 1) * pagination.per_page
 
     # get list of org URIs and labels from the triplestore
     q = '''
@@ -108,7 +103,7 @@ def licenses():
         ORDER BY ?label
         LIMIT {}
         OFFSET {}
-    '''.format(limit, offset)
+    '''.format(per_page, (page - 1) * per_page)
     register = []
     vocabs = sparql.query(q)
 
