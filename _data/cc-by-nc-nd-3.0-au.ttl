@@ -9,19 +9,22 @@
 @prefix adms:  <http://www.w3.org/ns/adms#> .
 
 
-:cc-by-nc-nd-3.0-au  a        odrl:Set , odrl:Policy , cc:License ;
-        rdfs:label            "Creative Commons CC-BY-NC-ND 3.0 Australia" ;
-        rdfs:seeAlso          <http://creativecommons.org/licenses/by-nc-nd/3.0/au> ;
-        cc:jurisdiction       <http://dbpedia.org/page/Australia> ;
-        cc:legalcode          <http://creativecommons.org/licenses/by-nc-nd/3.0/au/legalcode> ;
-        dct:hasVersion        "3.0" ;
-        dct:language          <http://www.lexvo.org/page/iso639-3/eng> ;
-        odrl:duty             [ a            odrl:Duty ;
-                                odrl:action  odrl:attribute , odrl:attachPolicy
-                              ] ;
-        odrl:permission       [ a            odrl:Permission ;
-                                odrl:action  odrl:reproduce , odrl:distribute
-                              ] ;
-        odrl:prohibition      [ a            odrl:Prohibition ;
-                                odrl:action  odrl:commercialize , odrl:derive
-                              ] .
+:cc-by-nc-nd-3.0-au  a    odrl:Set , odrl:Policy , cc:License ;
+    owl:sameAs            <http://test.linked.data.gov.au/license/cc-by-nc-nd-3.0-au> ;  # alias for the /license/ register
+    rdfs:label            "Creative Commons CC-BY-NC-ND 3.0 Australia" ;
+    rdfs:seeAlso          <http://creativecommons.org/licenses/by-nc-nd/3.0/au> ;
+    cc:jurisdiction       <http://dbpedia.org/page/Australia> ;
+    cc:legalcode          <http://creativecommons.org/licenses/by-nc-nd/3.0/au/legalcode> ;
+    dct:hasVersion        "3.0" ;
+    dct:language          <http://www.lexvo.org/page/iso639-3/eng> ;
+    odrl:duty             [ a            odrl:Duty ;
+                            odrl:action  odrl:attribute , odrl:attachPolicy
+                          ] ;
+    odrl:permission       [ a            odrl:Permission ;
+                            odrl:action  odrl:reproduce , odrl:distribute
+                          ] ;
+    odrl:prohibition      [ a            odrl:Prohibition ;
+                            odrl:action  odrl:commercialize , odrl:derive
+                          ] .
+
+<http://test.linked.data.gov.au/license/cc-by-nc-nd-3.0-au> a cc:License .

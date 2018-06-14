@@ -9,8 +9,11 @@
 @prefix adms:  <http://www.w3.org/ns/adms#> .
 
 
-:cc-by-4.0  a         odrl:Set , odrl:Policy , cc:License ;
-        cc:legalcode  <http://creativecommons.org/licenses/by/4.0/> ;
-        cc:permits    cc:Reproduction , cc:Distribution , cc:DerivativeWorks ;
-        cc:requires   cc:Notice , cc:Attribution ;
-        rdfs:label    "Creative Commons CC-BY 4.0" .
+:cc-by-4.0  a             odrl:Set , odrl:Policy , cc:License ;
+    owl:sameAs            <http://test.linked.data.gov.au/license/cc-by-4.0> ;  # alias for the /license/ register
+    cc:legalcode          <http://creativecommons.org/licenses/by/4.0/> ;
+    cc:permits            cc:Reproduction , cc:Distribution , cc:DerivativeWorks ;
+    cc:requires           cc:Notice , cc:Attribution ;
+    rdfs:label            "Creative Commons CC-BY 4.0" .
+
+<http://test.linked.data.gov.au/license/cc-by-4.0> a cc:License .

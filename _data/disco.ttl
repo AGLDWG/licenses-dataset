@@ -9,10 +9,13 @@
 @prefix adms:  <http://www.w3.org/ns/adms#> .
 
 
-:disco  a       odrl:Set , odrl:Policy , cc:License ;
-    rdfs:label "Discovery Read Only License"@en ;
-    rdfs:comment "This license only allows for one thing: the assignee may *read* the asset (dataset) for which this license is assigned. The intent is for the assignee to be able to assess the dataset for purposes such as evaluation for future use but nothing more: no on-publishing, no distribution etc."@en ;
+:disco  a                 odrl:Set , odrl:Policy , cc:License ;
+    owl:sameAs            <http://test.linked.data.gov.au/license/disco> ;  # alias for the /license/ register
+    rdfs:label            "Discovery Read Only License"@en ;
+    rdfs:comment          "This license only allows for one thing: the assignee may *read* the asset (dataset) for which this license is assigned. The intent is for the assignee to be able to assess the dataset for purposes such as evaluation for future use but nothing more: no on-publishing, no distribution etc."@en ;
     odrl:permission       [ a            odrl:Permission ;
                             odrl:action  odrl:read
                           ]
 .
+
+<http://test.linked.data.gov.au/license/disco> a cc:License .

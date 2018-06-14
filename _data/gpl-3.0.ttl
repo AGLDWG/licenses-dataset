@@ -10,21 +10,22 @@
 
 
 :gpl-3.0  a               odrl:Set , odrl:Policy , cc:License ;
-        rdfs:label        "GNU General Public License v3.0" ;
-        dct:creator       <http://fsf.org/> ;
-        rdfs:seeAlso      <http://gnu.org/licenses/gpl-3.0.html> ;
-        cc:legalcode      <http://gnu.org/licenses/gpl-3.0.html> ;
-        dct:creator       <http://fsf.org/> ;
-        dct:hasVersion    "3.0" ;
-        dct:language      <http://www.lexvo.org/page/iso639-3/eng> ;
-        owl:sameAs        <http://www.gnu.org/licenses/gpl-3.0.rdf> ;
-        odrl:duty         [ a            odrl:Duty ;
+    owl:sameAs            <http://test.linked.data.gov.au/license/gpl-2.0> ;  # alias for the /license/ register
+    rdfs:label            "GNU General Public License v3.0" ;
+    dct:creator           <http://fsf.org/> ;
+    rdfs:seeAlso          <http://gnu.org/licenses/gpl-3.0.html> ;
+    cc:legalcode          <http://gnu.org/licenses/gpl-3.0.html> ;
+    dct:creator           <http://fsf.org/> ;
+    dct:hasVersion        "1.0" ;
+    dct:language          <http://www.lexvo.org/page/iso639-3/eng> ;
+    owl:sameAs            <http://www.gnu.org/licenses/gpl-3.0.rdf> ;
+    odrl:duty             [ a            odrl:Duty ;
                             odrl:action  odrl:attachSource , odrl:attachPolicy
                           ] ;
-        odrl:permission   [ a            odrl:Permission ;
+    odrl:permission       [ a            odrl:Permission ;
                             odrl:action  odrl:derive , odrl:distribute , odrl:reproduce
                           ] ;
-        foaf:logo         <http://www.gnu.org/graphics/gplv3-127x51.png> .
+    foaf:logo         <http://www.gnu.org/graphics/gplv3-127x51.png> .
 
 
 #<http://gnu.org/licenses/gpl-3.0.html> a cc:License ;
@@ -34,3 +35,5 @@
 #    cc:requires cc:Copyleft,
 #        cc:Notice,
 #        cc:SourceCode ;
+
+<http://test.linked.data.gov.au/license/gpl-3.0> a cc:License .

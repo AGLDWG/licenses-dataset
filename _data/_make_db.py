@@ -15,6 +15,9 @@ for f in os.listdir(licenses_folder):
         print(len(g))
     # print('ok')
 
+# add ODRL ontology
+g.parse(os.path.join(licenses_folder, 'ontologies', 'odrl22.ttl'), format='turtle')
+
 with open(os.path.join(licenses_folder, 'licenses.ttl'), 'w') as n:
     n.write(g.serialize(format='turtle').decode('utf-8'))
 

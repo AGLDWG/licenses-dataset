@@ -50,17 +50,24 @@ def instance_details(uri):
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX opol: <http://linked.data.gov.au/def/odrl-policies#>
+        PREFIX owl: <http://www.w3.org/2002/07/owl#>
         SELECT *
         WHERE {{
-            <{0[uri]}>  rdfs:label ?label .
-            OPTIONAL {{ <{0[uri]}> dct:created ?created . }}
+            {{
+                <{0[uri]}>  rdfs:label ?label .
+                OPTIONAL {{ <{0[uri]}> dct:created ?created . }}
+            }}
+            UNION  # to deal with sameAs declarations for short top-level register URIs like /license/ for individuals
+            {{
+                ?x owl:sameAs <{0[uri]}> .
+                ?x  rdfs:label ?label .
+                OPTIONAL {{ ?x dct:created ?created . }}            
+            }}
         }}
     '''.format({'uri': uri})
 
     d = query(q)
-    if d is None:
-        return None
-    if d is None or len(d) < 1:  # handle no result
+    if d is None or len(d) < 1:
         return None
 
     d = d[0]

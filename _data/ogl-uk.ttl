@@ -9,17 +9,20 @@
 @prefix adms:  <http://www.w3.org/ns/adms#> .
 
 
-:ogl-uk  a                    odrl:Set , odrl:Policy , cc:License ;
-        rdfs:label            "UK Non-commercial Government License" ;
-        cc:legalcode          <http://www.nationalarchives.gov.uk/doc/non-commercial-government-licence/> ;
-        dct:hasVersion        "1.0" ;
-        dct:language          <http://www.lexvo.org/page/iso639-3/eng> ;
-        odrl:duty             [ a            odrl:Duty ;
-                                odrl:action  odrl:attribute , odrl:attachPolicy
-                              ] ;
-        odrl:permission       [ a            odrl:Permission ;
-                                odrl:action  odrl:reproduce , odrl:distribute , odrl:derive
-                              ] ;
-        odrl:prohibition      [ a            odrl:Prohibition ;
-                                odrl:action  odrl:commercialize
-                              ] .
+:ogl-uk  a                odrl:Set , odrl:Policy , cc:License ;
+    owl:sameAs            <http://test.linked.data.gov.au/license/ogl-uk> ;  # alias for the /license/ register
+    rdfs:label            "UK Non-commercial Government License" ;
+    cc:legalcode          <http://www.nationalarchives.gov.uk/doc/non-commercial-government-licence/> ;
+    dct:hasVersion        "1.0" ;
+    dct:language          <http://www.lexvo.org/page/iso639-3/eng> ;
+    odrl:duty             [ a            odrl:Duty ;
+                            odrl:action  odrl:attribute , odrl:attachPolicy
+                          ] ;
+    odrl:permission       [ a            odrl:Permission ;
+                            odrl:action  odrl:reproduce , odrl:distribute , odrl:derive
+                          ] ;
+    odrl:prohibition      [ a            odrl:Prohibition ;
+                            odrl:action  odrl:commercialize
+                          ] .
+
+<http://test.linked.data.gov.au/license/ogl-uk> a cc:License .

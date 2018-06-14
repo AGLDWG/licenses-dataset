@@ -9,7 +9,11 @@
 @prefix adms:  <http://www.w3.org/ns/adms#> .
 
 
-:cc-zero-1.0  a       odrl:Set , odrl:Policy , cc:License ;
-        cc:legalcode  <http://creativecommons.org/publicdomain/zero/1.0/> ;
-        cc:permits    cc:Reproduction , cc:Distribution , cc:DerivativeWorks ;
-        rdfs:label    "Creative Commons CC0" .
+:cc-zero-1.0  a           odrl:Set , odrl:Policy , cc:License ;
+    owl:sameAs            <http://test.linked.data.gov.au/license/cc-zero-1.0> ;  # alias for the /license/ register
+    cc:legalcode          <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    cc:permits            cc:Reproduction , cc:Distribution , cc:DerivativeWorks ;
+    rdfs:label            "Creative Commons CC0" ;
+    dct:hasVersion        "1.0" .
+
+<http://test.linked.data.gov.au/license/cc-zero-1.0> a cc:License .
