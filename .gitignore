@@ -117,7 +117,7 @@ catalog-*
 licenses.ttl
 
 # config dir
-_config/
+_conf/
 
 # Reg of Reg auto-generated file
 rofr.ttl

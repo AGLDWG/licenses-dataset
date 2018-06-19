@@ -1,8 +1,8 @@
-from flask import Blueprint, request, render_template
-from flask_paginate import Pagination
+from flask import Blueprint, request
 from model import sparql
 from pyldapi import *
-import _config as conf
+from model.policy import OdrlPoliciesObjectRenderer
+import _conf as conf
 
 
 routes = Blueprint('controller', __name__)
@@ -43,11 +43,6 @@ def policies():
     total = sparql.total_policies()
     if total is None:
         return Response('_data store is unreachable', status=500, mimetype='text/plain')
-    pagination = Pagination(page=page, total=total, per_page=per_page, record_name='Boards')
-
-    # translate pagination vars to query
-    limit = pagination.per_page
-    offset = (pagination.page - 1) * pagination.per_page
 
     # get list of org URIs and labels from the triplestore
     q = '''
@@ -61,7 +56,7 @@ def policies():
         ORDER BY ?label
         LIMIT {}
         OFFSET {}
-    '''.format(limit, offset)
+    '''.format(per_page, (page - 1) * per_page)
     register = []
     orgs = sparql.query(q)
 
@@ -204,49 +199,3 @@ def login():
 @routes.route('/function/new-license')
 def new_license():
     return 'Dummy Crete New License'
-
-
-class OdrlPoliciesObjectRenderer(Renderer):
-    def __init__(
-            self,
-            request,
-            uri,
-            label,
-            comment,
-            views,
-            default_view_token
-            ):
-        super().__init__(
-            request,
-            uri,
-            views,
-            default_view_token
-        )
-        self.label = label
-        self.comment = comment
-
-    def render(self):
-        if hasattr(self, 'vf_error'):
-            return Response(self.vf_error, status=406, mimetype='text/plain')
-        else:
-            if self.view == 'alternates':
-                return self._render_alternates_view()
-            elif self.view == 'pol':
-                return self._render_pol_view()
-
-    def _render_pol_view(self):
-        if self.format in Renderer.RDF_MIMETYPES:
-            rdf = sparql.object_describe(self.uri, self.format)
-            if rdf is None:
-                return Response('No triples contain that URI as subject', status=404, mimetype='text/plain')
-            else:
-                return Response(rdf, mimetype=self.format)
-        else:  # only the HTML format left
-            deets = sparql.instance_details(self.uri)
-            if deets is None:
-                return Response('That URI yielded no data', status=404, mimetype='text/plain')
-            else:
-                return render_template(
-                    'object.html',
-                    deets=deets
-                )

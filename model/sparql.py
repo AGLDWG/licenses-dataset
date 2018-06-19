@@ -1,6 +1,6 @@
-import _config as conf
 from SPARQLWrapper import SPARQLWrapper, JSON
 from rdflib import Graph, Namespace
+import _conf as conf
 
 
 def query(q):
